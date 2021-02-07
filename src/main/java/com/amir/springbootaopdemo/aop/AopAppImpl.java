@@ -31,9 +31,10 @@ public class AopAppImpl {
 		System.out.println("applyForTestController Hello from @After  "+joinpoint.getArgs()[0]);
 	}
 	
-	@AfterReturning("applyForTestController()")
-	public void afterReturningTestMethod(JoinPoint joinpoint) {
+	@AfterReturning(pointcut="applyForTestController()",returning="retVal")
+	public void afterReturningTestMethod(JoinPoint joinpoint,Object retVal) {
 		System.out.println("applyForTestController Hello from @AfterReturning  "+joinpoint.getArgs()[0]);
+		System.out.println("output from applyForTestController Hello from @AfterReturning " + retVal);
 	}
 	
 	@AfterThrowing("applyForTestController()")
